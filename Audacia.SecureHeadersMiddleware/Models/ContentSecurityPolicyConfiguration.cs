@@ -8,74 +8,74 @@ namespace Audacia.SecureHeadersMiddleware.Models
     public class ContentSecurityPolicyConfiguration : IConfigurationBase
     {
         /// <summary>
-        /// The base-uri values to use (which can be used in a document's base element)
+        /// The base-Uri values to use (which can be used in a document's base element)
         /// </summary>
-        public List<string> BaseUri { get; set; }
+        public List<DirectiveAndType> BaseUri { get; set; }
 
         /// <summary>
         /// The default-src values to use (as a fallback for the other CSP rules)
         /// </summary>
-        public List<string> DefaultSrc { get; set; }
+        public List<DirectiveAndType> DefaultSrc { get; set; }
 
         /// <summary>
         /// The script-src values to use (valid sources for sources for JavaScript)
         /// </summary>
-        public List<string> ScriptSrc { get; set; }
+        public List<DirectiveAndType> ScriptSrc { get; set; }
 
         /// <summary>
         /// The object-src values to use (valid sources for the object, embed, and applet elements)
         /// </summary>
-        public List<string> ObjectSrc { get; set; }
+        public List<DirectiveAndType> ObjectSrc { get; set; }
 
         /// <summary>
         /// The style-src values to use (valid sources for style sheets)
         /// </summary>
-        public List<string> StyleSrc { get; set; }
+        public List<DirectiveAndType> StyleSrc { get; set; }
 
         /// <summary>
         /// The img-src values to use (valid sources for images and favicons)
         /// </summary>
-        public List<string> ImgSrc { get; set; }
+        public List<DirectiveAndType> ImgSrc { get; set; }
 
         /// <summary>
         /// The media-src values to use (valid sources for loading media using the audio and video elements)
         /// </summary>
-        public List<string> MediaSrc { get; set; }
+        public List<DirectiveAndType> MediaSrc { get; set; }
 
         /// <summary>
         /// The frame-src values to use (valid sources for nested browsing contexts loading using elements such as frame and iframe)
         /// </summary>
-        public List<string> FrameSrc { get; set; }
+        public List<DirectiveAndType> FrameSrc { get; set; }
 
         /// <summary>
         /// The child-src values to use (valid sources for web workers and nested browsing contexts loaded using elements such as frame and iframe)
         /// </summary>
-        public List<string> ChildSrc { get; set; }
+        public List<DirectiveAndType> ChildSrc { get; set; }
 
         /// <summary>
         /// The frame-ancestors values to use (valid parents that may embed a page using frame, iframe, object, embed, or applet)
         /// </summary>
-        public List<string> FrameAncestors { get; set; }
+        public List<DirectiveAndType> FrameAncestors { get; set; }
 
         /// <summary>
         /// The font-src values to use (valid sources for fonts loaded using @font-face)
         /// </summary>
-        public List<string> FontSrc { get; set; }
+        public List<DirectiveAndType> FontSrc { get; set; }
 
         /// <summary>
         /// The connect-src values to use (restricts the URLs which can be loaded using script interfaces)
         /// </summary>
-        public List<string> ConnectSrc { get; set; }
+        public List<DirectiveAndType> ConnectSrc { get; set; }
 
         /// <summary>
         /// The manifest-src values to use (which manifest can be applied to the resource)
         /// </summary>
-        public List<string> ManifestSrc { get; set; }
+        public List<DirectiveAndType> ManifestSrc { get; set; }
 
         /// <summary>
         /// The form-action values to use (restricts the URLs which can be used as the target of a form submissions from a given context)
         /// </summary>
-        public List<string> FormAction { get; set; }
+        public List<DirectiveAndType> FormAction { get; set; }
         
         /// <summary>
         /// Specifies an HTML sandbox policy that the user agent applies to the protected resource.
@@ -112,20 +112,20 @@ namespace Audacia.SecureHeadersMiddleware.Models
         public ContentSecurityPolicyConfiguration(string pluginTypes, bool blockAllMixedContent,
             bool upgradeInsecureRequests, string referrer, string reportUri)
         {
-            BaseUri = new List<string>();
-            DefaultSrc = new List<string>();
-            ScriptSrc = new List<string>();
-            ObjectSrc = new List<string>();
-            StyleSrc = new List<string>();
-            ImgSrc = new List<string>();
-            MediaSrc = new List<string>();
-            FrameSrc = new List<string>();
-            ChildSrc = new List<string>();
-            FrameAncestors = new List<string>();
-            FontSrc = new List<string>();
-            ConnectSrc = new List<string>();
-            ManifestSrc = new List<string>();
-            FormAction = new List<string>();
+            BaseUri = new List<DirectiveAndType>();
+            DefaultSrc = new List<DirectiveAndType>();
+            ScriptSrc = new List<DirectiveAndType>();
+            ObjectSrc = new List<DirectiveAndType>();
+            StyleSrc = new List<DirectiveAndType>();
+            ImgSrc = new List<DirectiveAndType>();
+            MediaSrc = new List<DirectiveAndType>();
+            FrameSrc = new List<DirectiveAndType>();
+            ChildSrc = new List<DirectiveAndType>();
+            FrameAncestors = new List<DirectiveAndType>();
+            FontSrc = new List<DirectiveAndType>();
+            ConnectSrc = new List<DirectiveAndType>();
+            ManifestSrc = new List<DirectiveAndType>();
+            FormAction = new List<DirectiveAndType>();
 
             PluginTypes = pluginTypes;
             BlockAllMixedContent = blockAllMixedContent;
@@ -144,7 +144,7 @@ namespace Audacia.SecureHeadersMiddleware.Models
 
             if (AnyValues())
             {
-                stringBuilder.BuildValuesForDirective("base-uri", BaseUri);
+                stringBuilder.BuildValuesForDirective("base-Uri", BaseUri);
                 stringBuilder.BuildValuesForDirective("default-src", DefaultSrc);
                 stringBuilder.BuildValuesForDirective("script-src", ScriptSrc);
                 stringBuilder.BuildValuesForDirective("object-src", ObjectSrc);
@@ -187,7 +187,7 @@ namespace Audacia.SecureHeadersMiddleware.Models
             
             if (!string.IsNullOrWhiteSpace(ReportUri))
             {
-                stringBuilder.Append($"report-uri {ReportUri}; ");
+                stringBuilder.Append($"report-Uri {ReportUri}; ");
             }
 
             return stringBuilder.ToString();

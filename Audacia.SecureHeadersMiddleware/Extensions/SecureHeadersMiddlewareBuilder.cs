@@ -67,6 +67,7 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
                 XFrameOptions xFrameOption = XFrameOptions.deny,
                 string domain = null)
         {
+            config.UseXFrameOptions = true;
             config.XFrameOptionsConfiguration = new XFrameOptionsConfiguration(xFrameOption, domain);
             
             return config;
@@ -79,7 +80,7 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
         /// The XSS Filter mode to use. Acceptable values are: zero, one, oneBlock, oneReport
         /// </param>
         /// <param name="reportUri">
-        /// An option uri to report any XSS filter voilation to. This parameter is optional
+        /// An option Uri to report any XSS filter voilation to. This parameter is optional
         /// and will only be used if the value of <param name="xssMode"/> is set to oneReport
         /// </param>
         /// If no value for <param name="xssMode"/> is supplied, then the default one will
@@ -90,6 +91,7 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
                 XssMode xssMode = XssMode.oneBlock,
                 string reportUri = null)
         {
+            config.UseXssProtection = true;
             config.XssConfiguration = new XssConfiguration(xssMode, reportUri);
             return config;
         }
@@ -126,11 +128,10 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
         public static SecureHeadersMiddlewareConfiguration UseContentDefaultSecurityPolicy
         (this SecureHeadersMiddlewareConfiguration config)
         {
-            config.ContentSecurityPolicyConfiguration = new ContentSecurityPolicyConfiguration
-                (null, true, true, null, null);
+            config.UseContentSecurityPolicy = true;
 
-            config.SetCspUris(new List<string> {"self"}, CspUriType.Script);
-            config.SetCspUris(new List<string> {"self"}, CspUriType.Object);
+            config.ContentSecurityPolicyConfiguration = new ContentSecurityPolicyConfiguration
+                (null, false, false, null, null);
             
             return config;
         }
@@ -154,6 +155,8 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
                 bool upgradeInsecureRequests = true, string referrer = null,
                 string reportUri = null)
         {
+            config.UseContentSecurityPolicy = true;
+
             config.ContentSecurityPolicyConfiguration = new ContentSecurityPolicyConfiguration
                 (pluginTypes, blockAllMixedContent, upgradeInsecureRequests, referrer, reportUri);
             
@@ -172,6 +175,8 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
             XPermittedCrossDomainOptionValue xPermittedCrossDomainOptionValue =
                 XPermittedCrossDomainOptionValue.none)
         {
+            config.UsePermittedCrossDomainPolicy = true;
+
             config.PermittedCrossDomainPolicyConfiguration =
                 new PermittedCrossDomainPolicyConfiguration(xPermittedCrossDomainOptionValue);
 
@@ -190,6 +195,8 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
                 ReferrerPolicyOptions referrerPolicyOption =
                     ReferrerPolicyOptions.noReferrer)
         {
+            config.UseReferrerPolicy = true;
+
             config.ReferrerPolicy = new ReferrerPolicy(referrerPolicyOption);
             return config;
         }

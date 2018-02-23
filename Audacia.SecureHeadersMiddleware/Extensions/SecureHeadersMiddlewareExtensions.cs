@@ -33,6 +33,20 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
                 .UseReferrerPolicy()
                 .Build();
         }
+
+        public static SecureHeadersMiddlewareConfiguration BuildAngular2TemplateConfiguration(bool forceHttps)
+        {
+            return SecureHeadersMiddlewareBuilder
+                .CreateBuilder()
+                .UseHsts()
+                .UseXFrameOptions()
+                .UseXSSProtection()
+                .UseContentTypeOptions()
+                .UseContentSecurityPolicy(blockAllMixedContent: forceHttps, upgradeInsecureRequests: forceHttps)
+                .UsePermittedCrossDomainPolicies()
+                .UseReferrerPolicy()
+                .Build();
+        }
         
         /// <summary>
         /// Extention method to include the <see cref="SecureHeadersMiddleware" /> in
