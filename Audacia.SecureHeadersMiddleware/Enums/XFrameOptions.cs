@@ -4,6 +4,7 @@
     {
         deny,
         sameorigin,
-        allowfrom
+        allowfrom,
+        allowall
     };
 }

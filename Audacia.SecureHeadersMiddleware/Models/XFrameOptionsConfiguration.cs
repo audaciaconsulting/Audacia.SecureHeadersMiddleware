@@ -27,18 +27,20 @@ namespace Audacia.SecureHeadersMiddleware.Models
             switch (OptionValue)
             {
                 case XFrameOptions.deny:
-                    stringBuilder.Append("deny");
+                    stringBuilder.Append("DENY");
                     break;
                 case XFrameOptions.sameorigin:
-                    stringBuilder.Append("sameorigin");
+                    stringBuilder.Append("SAMEORIGIN");
                     break;
                 case XFrameOptions.allowfrom:
                     if (string.IsNullOrWhiteSpace(AllowFromDomain))
                     {
                         ArgumentExceptionHelper.RaiseException(nameof(AllowFromDomain));
                     }
-                    stringBuilder.Append("allow-from: ");
-                    stringBuilder.Append(AllowFromDomain);
+                    stringBuilder.Append($"ALLOW-FROM({AllowFromDomain})");
+                    break;
+                case XFrameOptions.allowall:
+                    stringBuilder.Append("ALLOWALL");
                     break;
             }
 
