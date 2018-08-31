@@ -1,16 +1,17 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using Audacia.SecureHeadersMiddleware.Extensions;
 
-namespace Audacia.SecureHeadersMiddleware.Models
+namespace Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy
 {
-    public class ContentSecurityPolicyConfiguration : IConfigurationBase
+    public class Configuration : IConfigurationBase
     {
         /// <summary>
         /// The base-Uri values to use (which can be used in a document's base element)
         /// </summary>
-        public List<DirectiveAndType> BaseUri { get; set; }
+        public List<DirectiveAndType> BaseRules { get; set; }
 
         /// <summary>
         /// The default-src values to use (as a fallback for the other CSP rules)
@@ -80,7 +81,7 @@ namespace Audacia.SecureHeadersMiddleware.Models
         /// <summary>
         /// Specifies an HTML sandbox policy that the user agent applies to the protected resource.
         /// </summary>
-        public ContentSecurityPolicySandBox Sandbox { get; set; }
+        public SandBox Sandbox { get; set; }
         
         /// <summary>
         /// Define the set of plugins that can be invoked by the protected resource by limiting the types of resources that can be embedded
@@ -107,12 +108,12 @@ namespace Audacia.SecureHeadersMiddleware.Models
         /// </summary>
         public string ReportUri { get; set; }
 
-        protected ContentSecurityPolicyConfiguration() { }
+        protected Configuration() { }
 
-        public ContentSecurityPolicyConfiguration(string pluginTypes, bool blockAllMixedContent,
+        public Configuration(string pluginTypes, bool blockAllMixedContent,
             bool upgradeInsecureRequests, string referrer, string reportUri)
         {
-            BaseUri = new List<DirectiveAndType>();
+            BaseRules = new List<DirectiveAndType>();
             DefaultSrc = new List<DirectiveAndType>();
             ScriptSrc = new List<DirectiveAndType>();
             ObjectSrc = new List<DirectiveAndType>();
@@ -144,7 +145,7 @@ namespace Audacia.SecureHeadersMiddleware.Models
 
             if (AnyValues())
             {
-                stringBuilder.BuildValuesForDirective("base-Uri", BaseUri);
+                stringBuilder.BuildValuesForDirective("base-Uri", BaseRules);
                 stringBuilder.BuildValuesForDirective("default-src", DefaultSrc);
                 stringBuilder.BuildValuesForDirective("script-src", ScriptSrc);
                 stringBuilder.BuildValuesForDirective("object-src", ObjectSrc);
@@ -195,7 +196,7 @@ namespace Audacia.SecureHeadersMiddleware.Models
 
         private bool AnyValues()
         {
-            return BaseUri.Any()    || DefaultSrc.Any() || ScriptSrc.Any()  || ObjectSrc.Any()
+            return BaseRules.Any()    || DefaultSrc.Any() || ScriptSrc.Any()  || ObjectSrc.Any()
                 || StyleSrc.Any()   || ImgSrc.Any()     || MediaSrc.Any()   || FrameSrc.Any()
                 || ChildSrc.Any()   || FrameAncestors.Any() || FontSrc.Any()|| ConnectSrc.Any()
                 || ManifestSrc.Any()|| FormAction.Any();

@@ -1,14 +1,14 @@
-using Audacia.SecureHeadersMiddleware.Enums;
+﻿using Audacia.SecureHeadersMiddleware.Enums;
 
-namespace Audacia.SecureHeadersMiddleware.Models
+namespace Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy
 {
-    public class ContentSecurityPolicySandBox : IConfigurationBase
+    public class SandBox : IConfigurationBase
     {
-        protected ContentSecurityPolicySandBox() {}
+        protected SandBox() {}
 
         public CspSandboxType SandboxType { get; set; }
         
-        public ContentSecurityPolicySandBox(CspSandboxType sandboxType)
+        public SandBox(CspSandboxType sandboxType)
         {
             SandboxType = sandboxType;
         }

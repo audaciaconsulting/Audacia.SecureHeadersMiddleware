@@ -1,5 +1,10 @@
-using Audacia.SecureHeadersMiddleware.Models;
+using System;
 using Microsoft.AspNetCore.Builder;
+
+using Audacia.SecureHeadersMiddleware.Enums;
+using Audacia.SecureHeadersMiddleware.Models;
+using System.Collections.Generic;
+using Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy;
 
 namespace Audacia.SecureHeadersMiddleware.Extensions
 {
@@ -47,6 +52,50 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
                 .UseReferrerPolicy()
                 .Build();
         }
+
+        /// <summary>
+        /// Used to append the current CSP rules, adding a rule for a given domain (<see cref="DirectiveAndType.Uri"/>),
+        /// directive (<see cref="DirectiveAndType.DirectiveType" />) and source type (<see cref="CspUriType")
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="url"></param>
+        /// <param name="directive"></param>
+        /// <param name="sourceType"></param>
+        /// <returns></returns>
+        public static SecureHeadersMiddlewareConfiguration TryAppendCsp(this SecureHeadersMiddlewareConfiguration config,
+                    string url, Models.ContentSecurityPolicy.DirectiveType directive,
+                    CspUriType sourceType = CspUriType.DefaultUri)
+        {
+            CheckCspInUseAndVaild(config);
+
+            config.AddCspRules(
+                new Models.ContentSecurityPolicy.DirectiveAndType
+                {
+                    Uri = url,
+                    DirectiveType = directive
+                },
+                sourceType);
+
+            return config;
+        }
+
+        /// <summary>
+        /// Used to set (overwrite) the CSP rules for a given CSP source (<see cref="CspUriType"/>).
+        /// This will overwrite any pre-existing rules, if CSP is in use.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="CspRules"></param>
+        /// <param name="sourceType"></param>
+        /// <returns></returns>
+        public static SecureHeadersMiddlewareConfiguration TrySetCsp(this SecureHeadersMiddlewareConfiguration config,
+                    List<DirectiveAndType> CspRules, CspUriType sourceType = CspUriType.DefaultUri)
+        {
+            CheckCspInUseAndVaild(config);
+
+            config.SetCspRules(CspRules, sourceType);
+
+            return config;
+        }
         
         /// <summary>
         /// Extention method to include the <see cref="SecureHeadersMiddleware" /> in
@@ -59,6 +108,19 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
         public static IApplicationBuilder UseSecureHeadersMiddleware(this IApplicationBuilder builder, SecureHeadersMiddlewareConfiguration config)
         {
             return builder.UseMiddleware<SecureHeadersMiddleware>(config);
+        }
+
+        private static void CheckCspInUseAndVaild(SecureHeadersMiddlewareConfiguration config)
+        {
+            if (config?.ContentSecurityPolicyConfiguration == null)
+            {
+                throw new ArgumentException($"Attempted to Append CSP (by calling {nameof(TryAppendCsp)}), but there was no CSP found");
+            }
+
+            if (!config.UseContentSecurityPolicy)
+            {
+                throw new ArgumentException($"Attempted to Append CSP (by calling {nameof(TryAppendCsp)}), but CSP is not being used");
+            }
         }
     }
 }

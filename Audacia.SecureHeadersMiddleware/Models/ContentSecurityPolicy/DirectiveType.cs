@@ -1,4 +1,4 @@
-namespace Audacia.SecureHeadersMiddleware.Models
+﻿namespace Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy
 {
     public enum DirectiveType
     {

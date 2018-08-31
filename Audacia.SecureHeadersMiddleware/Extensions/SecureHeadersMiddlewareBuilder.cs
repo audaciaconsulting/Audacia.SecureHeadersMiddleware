@@ -4,8 +4,10 @@
 //                https://www.owasp.org/index.php/OWASP_Secure_Headers_Project
 
 using System.Collections.Generic;
+
 using Audacia.SecureHeadersMiddleware.Enums;
 using Audacia.SecureHeadersMiddleware.Models;
+using Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy;
 
 namespace Audacia.SecureHeadersMiddleware.Extensions
 {
@@ -130,7 +132,7 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
         {
             config.UseContentSecurityPolicy = true;
 
-            config.ContentSecurityPolicyConfiguration = new ContentSecurityPolicyConfiguration
+            config.ContentSecurityPolicyConfiguration = new Configuration
                 (null, false, false, null, null);
             
             return config;
@@ -157,7 +159,7 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
         {
             config.UseContentSecurityPolicy = true;
 
-            config.ContentSecurityPolicyConfiguration = new ContentSecurityPolicyConfiguration
+            config.ContentSecurityPolicyConfiguration = new Configuration
                 (pluginTypes, blockAllMixedContent, upgradeInsecureRequests, referrer, reportUri);
             
             return config;

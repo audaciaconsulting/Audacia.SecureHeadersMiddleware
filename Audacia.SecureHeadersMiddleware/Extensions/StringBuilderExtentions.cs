@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using Audacia.SecureHeadersMiddleware.Models;
+using Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy;
 
 namespace Audacia.SecureHeadersMiddleware.Extensions
 {

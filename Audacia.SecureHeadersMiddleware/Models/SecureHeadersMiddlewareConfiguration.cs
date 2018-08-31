@@ -1,3 +1,5 @@
+using Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy;
+
 namespace Audacia.SecureHeadersMiddleware.Models
 {
     public class SecureHeadersMiddlewareConfiguration
@@ -55,7 +57,7 @@ namespace Audacia.SecureHeadersMiddleware.Models
         /// <summary>
         /// The Content-Security-Policy configuration to use
         /// </summary>
-        public ContentSecurityPolicyConfiguration ContentSecurityPolicyConfiguration { get; set; }
+        public Configuration ContentSecurityPolicyConfiguration { get; set; }
 
         /// <summary>
         /// The X-Permitted-Cross-Domain-Policy configuration to use
