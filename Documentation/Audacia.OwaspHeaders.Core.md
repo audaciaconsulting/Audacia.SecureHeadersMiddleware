@@ -30,6 +30,26 @@ app.UseSecureHeadersMiddleware(
 );
 ```
 
+#### Note
+
+As of .NET Core 2.1, the SDK now ships with a TLS certificate which can be added to the list of globally accepted certs on your dev machine. This can be achieved using the following command:
+
+``` bash
+dotnet dev-certs https --trust
+```
+
+This will install a _temporary_ **DEVELOPMENT ONLY** certificate on your machine. If (in dev mode only), you load that cert into your application, then you can swap the above C# code for:
+
+``` csharp
+app.UseSecureHeadersMiddleware(
+    SecureHeadersMiddlewareExtensions.BuildAngular2TemplateConfiguration()
+);
+```
+
+as the default value is `true`.
+
+---
+
 ### BuildAngular2TemplateConfiguration
 
 The above extension method adds recommended security headers to all of the responses that your application will generate, and looks (currently - as of May 3<sup>rd</sup>, 2018) like this:
