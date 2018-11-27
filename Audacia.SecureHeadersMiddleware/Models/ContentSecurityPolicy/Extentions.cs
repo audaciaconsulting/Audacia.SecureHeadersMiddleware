@@ -53,7 +53,7 @@ namespace Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy
                 case CspUriType.Manifest:
                     @this.ManifestSrc.Add(rule);
                     break;
-                case CspUriType.Form:
+                case CspUriType.FormAction:
                     @this.FormAction.Add(rule);
                     break;
                 default:
@@ -111,7 +111,7 @@ namespace Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy
                 case CspUriType.Manifest:
                     @this.ManifestSrc = rules;
                     break;
-                case CspUriType.Form:
+                case CspUriType.FormAction:
                     @this.FormAction = rules;
                     break;
                 default:

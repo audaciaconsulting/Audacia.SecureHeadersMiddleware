@@ -15,6 +15,6 @@
         Font,
         Connect,
         Manifest,
-        Form
+        FormAction
     }
 }
