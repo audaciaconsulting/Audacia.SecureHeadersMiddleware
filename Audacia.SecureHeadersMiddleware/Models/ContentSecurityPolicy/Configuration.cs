@@ -145,7 +145,7 @@ namespace Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy
 
             if (AnyValues())
             {
-                stringBuilder.BuildValuesForDirective("base-Uri", BaseRules);
+                stringBuilder.BuildValuesForDirective("base-uri", BaseRules);
                 stringBuilder.BuildValuesForDirective("default-src", DefaultSrc);
                 stringBuilder.BuildValuesForDirective("script-src", ScriptSrc);
                 stringBuilder.BuildValuesForDirective("object-src", ObjectSrc);
@@ -196,7 +196,7 @@ namespace Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy
 
         private bool AnyValues()
         {
-            return BaseRules.Any()    || DefaultSrc.Any() || ScriptSrc.Any()  || ObjectSrc.Any()
+            return BaseRules.Any()  || DefaultSrc.Any() || ScriptSrc.Any()  || ObjectSrc.Any()
                 || StyleSrc.Any()   || ImgSrc.Any()     || MediaSrc.Any()   || FrameSrc.Any()
                 || ChildSrc.Any()   || FrameAncestors.Any() || FontSrc.Any()|| ConnectSrc.Any()
                 || ManifestSrc.Any()|| FormAction.Any();
