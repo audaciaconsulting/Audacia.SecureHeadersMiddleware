@@ -16,7 +16,7 @@ namespace Audacia.SecureHeadersMiddleware.Models
         /// The time, in seconds, that the browser should remember that this site is only to be accessed using HTTPS
         /// (defaults to the industry standard value of 1 year)
         /// </summary>
-        public int MaxAge { get; set; } = 315360000;
+        public int MaxAge { get; set; } = 31536000;
 
         /// <summary>
         /// Protected constructor, we can no longer create instances of this
