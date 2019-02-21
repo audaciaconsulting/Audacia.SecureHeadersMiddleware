@@ -18,6 +18,21 @@ namespace Audacia.SecureHeadersMiddleware.Models
         }
 
         /// <summary>
+        /// Used to set the validate and set the XFramesOptionValue
+        /// </summary>
+        public void SetValues(XFrameOptions optionValue, string domain = null)
+        {
+            if (optionValue == XFrameOptions.allowfrom && string.IsNullOrWhiteSpace(domain))
+            {
+                ArgumentExceptionHelper.RaiseException(nameof(domain));
+            }
+
+            OptionValue = optionValue;
+            AllowFromDomain = domain;
+        }
+
+
+        /// <summary>
         /// Builds the HTTP header value
         /// </summary>
         /// <returns>A string representing the HTTP header value</returns>

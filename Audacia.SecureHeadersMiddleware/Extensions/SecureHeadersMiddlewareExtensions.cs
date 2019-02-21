@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Builder;
 
 using Audacia.SecureHeadersMiddleware.Enums;
 using Audacia.SecureHeadersMiddleware.Models;
-using System.Collections.Generic;
 using Audacia.SecureHeadersMiddleware.Models.ContentSecurityPolicy;
 
 namespace Audacia.SecureHeadersMiddleware.Extensions
@@ -94,6 +95,53 @@ namespace Audacia.SecureHeadersMiddleware.Extensions
 
             config.SetCspRules(CspRules, sourceType);
 
+            return config;
+        }
+
+        /// <summary>
+        /// Used to append a CSP rule for external domains for a given CSP source type (<see cref="CspUriType"/>).
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="cspType"></param>
+        /// <param name="domains"></param>
+        public static SecureHeadersMiddlewareConfiguration WithCspRuleExternalDomain(this SecureHeadersMiddlewareConfiguration config,
+                    CspUriType cspType, List<string> domains)
+        {
+            foreach(var d in domains)
+            {
+                config.TryAppendCsp(d, DirectiveType.ExternalDomain, cspType);
+            }
+            return config;
+        }
+
+        /// <summary>
+        /// Used to append a CSP rule for a list of directives (i.e 'self', 'sha-', 'data:', 'nonce:') for
+        /// a given CSP source type (<see cref="CspUriType"/>).
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="cspType"></param>
+        /// <param name="domains"></param>
+        public static SecureHeadersMiddlewareConfiguration WithCspRuleDirective(this SecureHeadersMiddlewareConfiguration config,
+                    CspUriType cspType, List<string> directives)
+        {
+            foreach(var d in directives)
+            {
+                config.TryAppendCsp(d, DirectiveType.CspDirective, cspType);
+            }
+            return config;
+        }
+
+        /// <summary>
+        /// Used to enable the loading of frames from a single, supplied, source url
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="source">The source url for the frame</param>
+        public static SecureHeadersMiddlewareConfiguration WithFramesFromSource(this SecureHeadersMiddlewareConfiguration config, string source)
+        {
+            if(config.UseXFrameOptions)
+            {
+                config.XFrameOptionsConfiguration.SetValues(XFrameOptions.allowfrom, source);
+            }
             return config;
         }
         
