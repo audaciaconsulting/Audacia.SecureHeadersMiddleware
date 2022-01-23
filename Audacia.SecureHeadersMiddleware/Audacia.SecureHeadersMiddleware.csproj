@@ -7,9 +7,9 @@
     <Product>Secure Headers Middleware</Product>
     <Description>A .NET Core middleware for injecting the Owasp recommended HTTP Headers for increased security</Description>
     <PackageLicenseUrl>https://github.com/GaProgMan/OwaspHeaders.Core/blob/master/LICENSE</PackageLicenseUrl>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <Version>2.0.0.0</Version>
-    <FileVersion>2.0.0</FileVersion>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <Version>2.1.0.0</Version>
+    <FileVersion>2.1.0</FileVersion>
     <PackageIconUrl>https://girnka-dm2305.files.1drv.com/y4mUfw_5APiy6YhvPidloaNkO5IMUh4GTX222ecazimKACSrlsUoptXi3WHjmHmPtDIxhjfcG0AJHcQ4NDxm4tA13PEBjzjoEnKm5hcoNzxS1i6um3cBaB0o9AMT3PXAULs9utk0wG6YP7tmUmQ_UTSaiG9mNEcXM_t1_Eiguvs1XeaIKBjbb_WF8hTUMzmwY_pGG8BuM9CDcu7tpW2oxK7fw</PackageIconUrl>
   </PropertyGroup>
 
