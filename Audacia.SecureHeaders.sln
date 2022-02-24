@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Audacia.SecureHeadersMiddleware", "Audacia.SecureHeadersMiddleware\Audacia.SecureHeadersMiddleware.csproj", "{3C44D37B-0C84-49CB-9907-F85416772A46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Audacia.SecureHeadersMiddleware", "src\Audacia.SecureHeadersMiddleware\Audacia.SecureHeadersMiddleware.csproj", "{3C44D37B-0C84-49CB-9907-F85416772A46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
