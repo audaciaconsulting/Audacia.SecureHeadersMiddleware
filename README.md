@@ -1,20 +1,14 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Overview
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+`Audacia.SecureHeadersMiddleware` is a wrapper around the [NetEscapades.AspNetCore.SecurityHeaders](https://github.com/andrewlock/NetEscapades.AspNetCore.SecurityHeaders) library. It uses middleware to add security-related headers, such as a Content Security Policy.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+# Usage
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+There are two `IApplicationBuilder` extension methods to add the recommended security headers; the one to use depends on the type of project:
+- `UseApiSecurityHeaders` for API projects
+- `UseIdentitySecurityHeaders` for MVC projects that implement an authentication provider such as IdentityServer or OpenIddict
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+Both methods return a `HeaderPolicyCollection`, which can be used to customize the headers. For example, suppose you want to use the default API headers, and also add a bespoke header called `My-Security-Header`, this can be achieved as follows:
+```csharp
+app.UseApiSecurityHeaders().AddCustomHeader("My-Security-Header", "header value");
+```
