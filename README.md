@@ -12,3 +12,6 @@ Both methods return a `HeaderPolicyCollection`, which can be used to customize t
 ```csharp
 app.UseApiSecurityHeaders().AddCustomHeader("My-Security-Header", "header value");
 ```
+
+# Contributing
+We welcome contributions! Please feel free to check our [Contribution Guidlines](https://github.com/audaciaconsulting/.github/blob/main/CONTRIBUTING.md) for feature requests, issue reporting and guidelines.
