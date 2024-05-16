@@ -59,6 +59,7 @@ private static bool IsResponseCachedEndpoint(this HttpContext context)
 
 ...
 
+// Must call this after app.UseRouting()
 app.UseCustomSecurityHeaders();
 ```
 
