@@ -5,4 +5,4 @@
 - Added MIT Licence
 
 ### Changed
-- Update Audacia.CodeAnalysis package
+- Updated Audacia.CodeAnalysis package
