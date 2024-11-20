@@ -24,5 +24,6 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.16.1" />
+        <PackageReference Include="System.Text.Encodings.Web" Version="4.5.1" />
     </ItemGroup>
 </Project>
