@@ -21,8 +21,6 @@ namespace Audacia.SecureHeadersMiddleware
         /// <exception cref="ArgumentNullException"><paramref name="algorithmHashValues"/> is <see langword="null"/>.</exception>
         public static CspDirectiveBuilder WithHashes(this CspDirectiveBuilder builder, IEnumerable<string> algorithmHashValues)
         {
-            if (algorithmHashValues == null) throw new ArgumentNullException(nameof(algorithmHashValues));
-
             foreach (var value in algorithmHashValues)
             {
                 var algorithmHash = value.Split('-');
