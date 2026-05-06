@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.1.4 - 2026-05-06
+### Added
+- No new functionality added.
+
+### Changed
+- Included README.md for NuGet
+- Updated all NuGet dependencies
+
+### Removed
+- No functionality removed.
+
 ## 3.1.3 - 2024-11-20
 ### Added
 - No new functionality added
