@@ -5,8 +5,10 @@
 - No new functionality added.
 
 ### Changed
-- Included README.md for NuGet
-- Updated all NuGet dependencies
+- Included README.md for NuGet.
+- Updated all NuGet dependencies.
+- Changed package to target dotnet 10.
+- Added basic unit test coverage.
 
 ### Removed
 - No functionality removed.
