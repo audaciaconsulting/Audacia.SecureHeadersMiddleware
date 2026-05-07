@@ -11,17 +11,17 @@ namespace Audacia.SecureHeadersMiddleware
         /// <summary>
         /// Gets or sets the collection of urls for UI apps that use the Identity app.
         /// </summary>
-        public IReadOnlyCollection<string> AppUrls { get; set; } = new List<string>();
+        public IReadOnlyCollection<string> AppUrls { get; set; } = [];
 
         /// <summary>
         /// Gets or sets the hashes to be added to the 'script-src' directive.
         /// </summary>
-        public IReadOnlyCollection<string> ScriptSrcHashes { get; set; } = new List<string>();
+        public IReadOnlyCollection<string> ScriptSrcHashes { get; set; } = [];
 
         /// <summary>
         /// Gets or sets the hashes to be added to the 'style-src' directive.
         /// </summary>
-        public IReadOnlyCollection<string> StyleSrcHashes { get; set; } = new List<string>();
+        public IReadOnlyCollection<string> StyleSrcHashes { get; set; } = [];
 
         /// <summary>
         /// Initializes a default instance of <see cref="IdentityContentSecurityPolicyConfig"/>.
@@ -45,7 +45,7 @@ namespace Audacia.SecureHeadersMiddleware
         /// </summary>
         /// <param name="appUrl">The base url of the UI app.</param>
         public IdentityContentSecurityPolicyConfig(string appUrl)
-            : this(new[] { appUrl }, Array.Empty<string>(), Array.Empty<string>())
+            : this([appUrl], [], [])
         {
         }
 
@@ -68,7 +68,7 @@ namespace Audacia.SecureHeadersMiddleware
         /// <param name="scriptSrcHash">A <see cref="string"/> representing the algorithm and hash of the script in the format 'algorithm-value', e.g. 'sha256-48t4ihreaewhfriujfs'.</param>
         /// <param name="styleSrcHash">A <see cref="string"/> representing the algorithm and hash of the style in the format 'algorithm-value', e.g. 'sha256-48t4ihreaewhfriujfs'.</param>
         public IdentityContentSecurityPolicyConfig(string appUrl, string scriptSrcHash, string styleSrcHash)
-            : this(new[] { appUrl }, new[] { scriptSrcHash }, new[] { styleSrcHash })
+            : this([appUrl], [scriptSrcHash], [styleSrcHash])
         {
         }
 
