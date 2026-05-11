@@ -9,6 +9,7 @@
 - Updated all NuGet dependencies.
 - Changed package to target dotnet 10.
 - Added basic unit test coverage.
+- Removed the CHANGELOG reference from the README.
 
 ### Removed
 - No functionality removed.
