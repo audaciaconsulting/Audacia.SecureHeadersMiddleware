@@ -1,0 +1,18 @@
+<Project>
+	<PropertyGroup>
+		<Authors>Audacia</Authors>
+		<TargetFramework>net10.0</TargetFramework>
+		<Version>4.0.0</Version>
+
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Audacia.CodeAnalysis" Version="1.12.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+</Project>

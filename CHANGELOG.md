@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.1.4 - 2026-05-06
+### Added
+- No new functionality added.
+
+### Changed
+- Included README.md for NuGet.
+- Updated all NuGet dependencies.
+- Changed package to target dotnet 10.
+- Added basic unit test coverage.
+- Removed the CHANGELOG reference from the README.
+
+### Removed
+- No functionality removed.
+
 ## 3.1.3 - 2024-11-20
 ### Added
 - No new functionality added

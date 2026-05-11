@@ -18,8 +18,8 @@ namespace Audacia.SecureHeadersMiddleware
         /// <exception cref="ArgumentNullException"><paramref name="builder"/> or <paramref name="urls"/> is <see langword="null"/>.</exception>
         public static FrameAncestorsDirectiveBuilder From(this FrameAncestorsDirectiveBuilder builder, IEnumerable<string> urls)
         {
-            if (builder == null) throw new ArgumentNullException(nameof(builder));
-            if (urls == null) throw new ArgumentNullException(nameof(urls));
+            ArgumentNullException.ThrowIfNull(builder);
+            ArgumentNullException.ThrowIfNull(urls);
 
             foreach (var url in urls)
             {
